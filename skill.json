@@ -1,0 +1,48 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "de-DE": {
+          "summary": "Das Alexa Metronom mit Unterstützung von 40 bis 210 Schlägen pro Minute.",
+          "examplePhrases": [
+            "Alexa, starte mein Metronom",
+            "Alexa, öffne mein Metronom mit 82 Schlägen pro Minute"
+          ],
+          "name": "Mein Metronom",
+          "description": "Dieser Skill macht Alexa zum Metronom. Unterstützt werden 40 bis 210 Schläge pro Minute.\n\nMit folgenden Befehlen kann das Metronom gesteuert werden:\n- Alexa, öffne mein Metronom mit 82 Schlägen\n- Alexa, sage meinem Metronom es soll schneller / langsamer spielen\n- Alexa, frage mein Metronom nach dem aktuellen Tempo\n\nHinweis: aktuell werden noch keine Takte wie z.B. 3/4 oder 4/4 unterstützt.",
+          "keywords": [
+            "Metronom",
+            "Takt",
+            "Taktgeber"
+          ],
+          "smallIconUri": "https://s3-eu-west-1.amazonaws.com/alexa-metronome-skill/icon108.png",
+          "largeIconUri": "https://s3-eu-west-1.amazonaws.com/alexa-metronome-skill/icon512.png"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "No special testing required.",
+      "category": "MUSIC_AND_AUDIO_ACCESSORIES",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "dist"
+        },
+        "interfaces": [
+          {
+            "type": "AUDIO_PLAYER"
+          }
+        ]
+      }
+    },
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "isExportCompliant": true,
+      "containsAds": false,
+      "isChildDirected": false,
+      "usesPersonalInfo": false
+    }
+  }
+}

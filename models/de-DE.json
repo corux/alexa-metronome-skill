@@ -1,0 +1,78 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "mein metronom",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PauseIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ResumeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": []
+        },
+        {
+          "name": "InfoIntent",
+          "samples": [
+            "wieviele Schläge gerade abgespielt werden",
+            "wieviele Schläge",
+            "aktuelles Tempo",
+            "welches Tempo",
+            "dem aktuellen Tempo",
+            "den aktuellen Schlägen pro Minute"
+          ]
+        },
+        {
+          "name": "SlowerIntent",
+          "samples": [
+            "langsamer",
+            "langsamer spielen",
+            "es soll langsamer spielen"
+          ]
+        },
+        {
+          "name": "FasterIntent",
+          "samples": [
+            "schneller",
+            "schneller spielen",
+            "es soll schneller spielen"
+          ]
+        },
+        {
+          "name": "MetronomeIntent",
+          "slots": [
+            {
+              "name": "bpm",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "mit {bpm} Schlägen pro Minute",
+            "mit {bpm} Schlägen",
+            "{bpm} Schläge",
+            "erhöhe auf {bpm}",
+            "verringere auf {bpm}",
+            "{bpm}"
+          ]
+        }
+      ],
+      "types": []
+    }
+  }
+}

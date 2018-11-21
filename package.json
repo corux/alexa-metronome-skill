@@ -1,0 +1,36 @@
+{
+  "name": "alexa-metronome-skill",
+  "version": "1.0.0",
+  "description": "Alexa Metronome Skill",
+  "private": true,
+  "license": "Apache-2.0",
+  "keywords": [],
+  "scripts": {
+    "test": "npm run build:prod",
+    "lint": "tslint --project tsconfig.json",
+    "lint:fix": "npm run lint -- --fix",
+    "build": "webpack --config webpack.config.ts --require ts-node/register",
+    "build:dev": "npm run build -- --mode development --watch",
+    "build:prod": "npm run lint && npm run build -- --mode production",
+    "deploy:prod": "ask deploy --force --profile default --target lambda",
+    "convert-assets": "rsvg-convert -w 108 -o assets/icon108.png assets/icon.svg && rsvg-convert -w 512 -o assets/icon512.png assets/icon.svg",
+    "create-s3-bucket": "aws s3 ls s3://alexa-metronome-skill > /dev/null 2>&1 || aws s3 mb s3://alexa-metronome-skill --region eu-west-1",
+    "deploy:assets": "aws s3 sync ./assets s3://alexa-metronome-skill/ --acl public-read"
+  },
+  "devDependencies": {
+    "@types/node": "10.12.9",
+    "ask-cli": "1.5.0",
+    "ask-sdk-core": "2.3.0",
+    "ask-sdk-model": "1.9.0",
+    "aws-sdk": "^2.360.0",
+    "class.extend": "0.9.2",
+    "raw-loader": "0.5.1",
+    "ts-loader": "5.3.0",
+    "ts-node": "7.0.1",
+    "tslint": "5.11.0",
+    "typescript": "3.1.6",
+    "underscore": "1.9.1",
+    "webpack": "4.26.0",
+    "webpack-command": "0.4.2"
+  }
+}

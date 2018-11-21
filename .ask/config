@@ -1,0 +1,49 @@
+{
+  "deploy_settings": {
+    "default": {
+      "skill_id": "amzn1.ask.skill.8b41158b-0cf2-42f1-a36e-c080da6a2976",
+      "was_cloned": false,
+      "merge": {
+        "manifest": {
+          "apis": {
+            "custom": {
+              "endpoint": {
+                "uri": "alexa-metronome-skill-production"
+              }
+            }
+          }
+        }
+      },
+      "resources": {
+        "manifest": {
+          "eTag": "66ffb3a09aac7e73dce7d6e44a96d57b"
+        },
+        "interactionModel": {
+          "de-DE": {
+            "eTag": "94a7b34fe7184033831577aeabc5da8f"
+          }
+        },
+        "lambda": [
+          {
+            "arn": "arn:aws:lambda:eu-west-1:347839150037:function:alexa-metronome-skill-production",
+            "functionName": "arn:aws:lambda:eu-west-1:347839150037:function:alexa-metronome-skill-production",
+            "awsRegion": "eu-west-1",
+            "alexaUsage": [
+              "custom/default"
+            ],
+            "revisionId": "4f70adae-ecea-4ae8-8a02-594f167cb718"
+          },
+          {
+            "arn": "arn:aws:lambda:us-east-1:347839150037:function:alexa-metronome-skill-production",
+            "functionName": "arn:aws:lambda:us-east-1:347839150037:function:alexa-metronome-skill-production",
+            "awsRegion": "us-east-1",
+            "alexaUsage": [
+              "custom/default"
+            ],
+            "revisionId": "6256a94b-3410-40e9-b4b2-05df0837cbe7"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -23,8 +23,8 @@ export class AmazonResumeIntentHandler implements RequestHandler {
     }
 
     return handlerInput.responseBuilder
-      .speak("Es gibt nichts fortzusetzen. Bitte wähle ein Tempo.")
-      .reprompt("Wähle ein Tempo")
+      .speak("Es gibt nichts fortzusetzen. Wieviele Schläge pro Minute sollen gespielt werden?")
+      .reprompt("Wieviele Schläge pro Minute sollen gespielt werden?")
       .withShouldEndSession(false)
       .getResponse();
   }

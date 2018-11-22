@@ -11,11 +11,11 @@ export class AmazonHelpIntentHandler implements RequestHandler {
   public async handle(handlerInput: HandlerInput): Promise<Response> {
     const bpms = await getAvailableBpm();
     const helpText = `Das Metronom kann zwischen ${Math.min(...bpms)} und ${Math.max(...bpms)}
-      Schläge pro Minute abspielen. Nenne mir dazu einfach das gewünschte Tempo.`;
+      Schläge pro Minute abspielen. Wieviele Schläge pro Minute sollen gespielt werden?`;
 
     return handlerInput.responseBuilder
       .speak(helpText)
-      .reprompt("Bitte wähle ein Tempo")
+      .reprompt("Wieviele Schläge pro Minute sollen gespielt werden?")
       .withShouldEndSession(false)
       .getResponse();
   }

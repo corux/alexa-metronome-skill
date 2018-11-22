@@ -41,10 +41,11 @@ export async function getResponse(handlerInput: HandlerInput, bpm: number): Prom
   if (!await isBpmSupported(bpm)) {
     const proposedBpm = await getClosestBpm(bpm);
     attributes.proposedBpm = proposedBpm;
+    console.log(`Unsupported BPM ${bpm} redirected to ${proposedBpm}.`);
     return handlerInput.responseBuilder
       .speak(`Das Tempo ${bpm} wird noch nicht unterstützt.
         Möchtest du stattdessen ${proposedBpm} verwenden?`)
-      .reprompt("Bitte wähle ein Tempo.")
+      .reprompt("Wieviele Schläge pro Minute sollen gespielt werden?")
       .withShouldEndSession(false);
   }
 

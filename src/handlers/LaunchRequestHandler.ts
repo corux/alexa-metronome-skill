@@ -19,7 +19,7 @@ export class LaunchRequestHandler implements RequestHandler {
     const responseBuilder = handlerInput.responseBuilder;
 
     return responseBuilder
-      .speak("Bitte wähle ein Tempo.")
+      .speak("Wieviele Schläge pro Minute sollen gespielt werden?")
       .reprompt("Wieviele Schläge pro Minute sollen gespielt werden?")
       .withShouldEndSession(false)
       .getResponse();

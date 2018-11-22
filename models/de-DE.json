@@ -63,6 +63,7 @@
             }
           ],
           "samples": [
+            "spiele {bpm} Schläge pro Minute",
             "mit {bpm} Schlägen pro Minute",
             "mit {bpm} Schlägen",
             "{bpm} Schläge",

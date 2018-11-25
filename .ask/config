@@ -8,7 +8,7 @@
           "apis": {
             "custom": {
               "endpoint": {
-                "uri": "alexa-metronome-skill-production"
+                "uri": "arn:aws:lambda:eu-west-1:347839150037:function:alexa-metronome-skill-production"
               }
             }
           }
@@ -16,7 +16,7 @@
       },
       "resources": {
         "manifest": {
-          "eTag": "6083e30ce872a282d1ad085d07397102"
+          "eTag": "e6f17f579a16b4a9d0f1fcac642ae6bc"
         },
         "interactionModel": {
           "de-DE": {
@@ -25,22 +25,16 @@
         },
         "lambda": [
           {
+            "alexaUsage": [
+              "custom/default"
+            ],
             "arn": "arn:aws:lambda:eu-west-1:347839150037:function:alexa-metronome-skill-production",
-            "functionName": "arn:aws:lambda:eu-west-1:347839150037:function:alexa-metronome-skill-production",
             "awsRegion": "eu-west-1",
-            "alexaUsage": [
-              "custom/default"
-            ],
-            "revisionId": "4f70adae-ecea-4ae8-8a02-594f167cb718"
-          },
-          {
-            "arn": "arn:aws:lambda:us-east-1:347839150037:function:alexa-metronome-skill-production",
-            "functionName": "arn:aws:lambda:us-east-1:347839150037:function:alexa-metronome-skill-production",
-            "awsRegion": "us-east-1",
-            "alexaUsage": [
-              "custom/default"
-            ],
-            "revisionId": "ced5f163-2561-4766-b56b-f1e027389d67"
+            "codeUri": "dist",
+            "functionName": "alexa-metronome-skill-production",
+            "handler": "index.handler",
+            "revisionId": "4ca945f4-1c76-41fa-b6cd-770d1533c3bb",
+            "runtime": "nodejs8.10"
           }
         ]
       }

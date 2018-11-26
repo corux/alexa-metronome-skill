@@ -13,8 +13,14 @@ export class AmazonStopIntentHandler implements RequestHandler {
   }
 
   public handle(handlerInput: HandlerInput): Response {
-    return handlerInput.responseBuilder
-      .addAudioPlayerStopDirective()
+    let builder = handlerInput.responseBuilder;
+    const audioPlayer = handlerInput.requestEnvelope.context.AudioPlayer;
+    const isMetronomePlaying = audioPlayer && audioPlayer.token;
+    if (isMetronomePlaying) {
+      builder = builder.addAudioPlayerStopDirective();
+    }
+
+    return builder
       .withShouldEndSession(true)
       .getResponse();
   }

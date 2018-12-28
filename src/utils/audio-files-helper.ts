@@ -39,14 +39,21 @@ export async function getResponse(handlerInput: HandlerInput, bpm: number): Prom
   const attributes = handlerInput.attributesManager.getSessionAttributes();
 
   if (!await isBpmSupported(bpm)) {
-    const proposedBpm = await getClosestBpm(bpm);
-    attributes.proposedBpm = proposedBpm;
-    console.log(`Unsupported BPM ${bpm} redirected to ${proposedBpm}.`);
-    return handlerInput.responseBuilder
-      .speak(`Das Tempo ${bpm} wird noch nicht unterstützt.
-        Möchtest du stattdessen ${proposedBpm} verwenden?`)
-      .reprompt("Wieviele Schläge pro Minute sollen gespielt werden?")
-      .withShouldEndSession(false);
+    const reprompt = "Wieviele Schläge pro Minute sollen gespielt werden?";
+    if (bpm > 0) {
+      const proposedBpm = await getClosestBpm(bpm);
+      attributes.proposedBpm = proposedBpm;
+      console.log(`Unsupported BPM ${bpm} redirected to ${proposedBpm}.`);
+
+      return handlerInput.responseBuilder
+        .speak(`Das Tempo ${bpm} wird noch nicht unterstützt.
+          Möchtest du stattdessen ${proposedBpm} verwenden?`)
+        .reprompt(reprompt);
+    } else {
+      return handlerInput.responseBuilder
+        .speak(`Ich habe dich nicht verstanden. ${reprompt}`)
+        .reprompt(reprompt);
+    }
   }
 
   attributes.bpm = bpm;

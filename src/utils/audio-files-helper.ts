@@ -83,7 +83,7 @@ const recommendedBpmList = [
 ];
 
 export async function getFasterBpm(bpm: number): Promise<number> {
-  const next = recommendedBpmList.filter((item) => item > bpm).sort();
+  const next = recommendedBpmList.filter((item) => item > bpm);
   if (next.length) {
     return next[0];
   }
@@ -92,7 +92,7 @@ export async function getFasterBpm(bpm: number): Promise<number> {
 }
 
 export async function getSlowerBpm(bpm: number): Promise<number> {
-  const next = recommendedBpmList.filter((item) => item < bpm).sort().reverse();
+  const next = recommendedBpmList.filter((item) => item < bpm).reverse();
   if (next.length) {
     return next[0];
   }

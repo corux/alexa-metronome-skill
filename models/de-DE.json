@@ -25,6 +25,9 @@
           "name": "AMAZON.NoIntent"
         },
         {
+          "name": "AMAZON.FallbackIntent"
+        },
+        {
           "name": "InfoIntent",
           "samples": [
             "wieviele Schläge gerade abgespielt werden",

@@ -1,13 +1,12 @@
-import { HandlerInput, RequestHandler } from "ask-sdk-core";
+import { HandlerInput } from "ask-sdk-core";
 import { Response } from "ask-sdk-model";
-import { getBpmFromRequest } from "../utils";
+import { BaseIntentHandler, getBpmFromRequest, Intents } from "../utils";
 
-export class InfoIntentHandler implements RequestHandler {
+@Intents("InfoIntent")
+export class InfoIntentHandler extends BaseIntentHandler {
   public canHandle(handlerInput: HandlerInput): boolean {
-    const request = handlerInput.requestEnvelope.request;
     const bpm = getBpmFromRequest(handlerInput);
-
-    return request.type === "IntentRequest" && request.intent.name === "InfoIntent" && !!bpm;
+    return super.canHandle(handlerInput) && !!bpm;
   }
 
   public async handle(handlerInput: HandlerInput): Promise<Response> {

@@ -67,15 +67,12 @@ export async function getResponse(handlerInput: HandlerInput, bpm: number): Prom
 }
 
 export function getBpmFromRequest(handlerInput: HandlerInput): number {
-  if (handlerInput.requestEnvelope.session) {
-    const attributes = handlerInput.attributesManager.getSessionAttributes();
-    if (attributes.bpm) {
-      return attributes.bpm;
-    }
-  }
   if (handlerInput.requestEnvelope.context.AudioPlayer) {
     const token = handlerInput.requestEnvelope.context.AudioPlayer.token;
-    return parseInt(token, 10);
+    const bpm = parseInt(token, 10);
+    if (bpm > 0) {
+      return bpm;
+    }
   }
 
   return undefined;

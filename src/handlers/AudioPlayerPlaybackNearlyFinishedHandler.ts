@@ -1,13 +1,9 @@
-import { HandlerInput, RequestHandler } from "ask-sdk-core";
+import { HandlerInput } from "ask-sdk-core";
 import { Response } from "ask-sdk-model";
-import { getBpmFromRequest, getLink } from "../utils";
+import { BaseIntentHandler, getBpmFromRequest, getLink, Request } from "../utils";
 
-export class AudioPlayerPlaybackNearlyFinishedHandler implements RequestHandler {
-  public canHandle(handlerInput: HandlerInput): boolean {
-    const request = handlerInput.requestEnvelope.request;
-    return request.type === "AudioPlayer.PlaybackNearlyFinished";
-  }
-
+@Request("AudioPlayer.PlaybackNearlyFinished")
+export class AudioPlayerPlaybackNearlyFinishedHandler extends BaseIntentHandler {
   public handle(handlerInput: HandlerInput): Response {
     const bpm = getBpmFromRequest(handlerInput);
 

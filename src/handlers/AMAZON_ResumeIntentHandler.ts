@@ -1,19 +1,9 @@
-import { HandlerInput, RequestHandler } from "ask-sdk-core";
+import { HandlerInput } from "ask-sdk-core";
 import { Response } from "ask-sdk-model";
-import { getBpmFromRequest, getResponse } from "../utils";
+import { BaseIntentHandler, getBpmFromRequest, getResponse, Intents } from "../utils";
 
-export class AmazonResumeIntentHandler implements RequestHandler {
-  public canHandle(handlerInput: HandlerInput): boolean {
-    const request = handlerInput.requestEnvelope.request;
-
-    return request.type === "IntentRequest" &&
-      [
-        "AMAZON.StartOverIntent",
-        "AMAZON.ResumeIntent",
-        "AMAZON.NextIntent",
-      ].indexOf(request.intent.name) !== -1;
-  }
-
+@Intents("AMAZON.StartOverIntent", "AMAZON.ResumeIntent", "AMAZON.NextIntent")
+export class AmazonResumeIntentHandler extends BaseIntentHandler {
   public async handle(handlerInput: HandlerInput): Promise<Response> {
     const bpm = getBpmFromRequest(handlerInput);
 
@@ -25,7 +15,6 @@ export class AmazonResumeIntentHandler implements RequestHandler {
     return handlerInput.responseBuilder
       .speak("Es gibt nichts fortzusetzen. Wieviele Schläge pro Minute sollen gespielt werden?")
       .reprompt("Wieviele Schläge pro Minute sollen gespielt werden?")
-      .withShouldEndSession(false)
       .getResponse();
   }
 }

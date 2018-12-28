@@ -1,14 +1,16 @@
-import { HandlerInput, RequestHandler } from "ask-sdk-core";
+import { HandlerInput } from "ask-sdk-core";
 import { Response } from "ask-sdk-model";
-import { getResponse } from "../utils";
+import { BaseIntentHandler, getResponse, Intents } from "../utils";
 
-export class AmazonYesIntentHandler implements RequestHandler {
+@Intents("AMAZON.YesIntent")
+export class AmazonYesIntentHandler extends BaseIntentHandler {
   public canHandle(handlerInput: HandlerInput): boolean {
-    const request = handlerInput.requestEnvelope.request;
-    const attributes = handlerInput.attributesManager.getSessionAttributes();
+    if (super.canHandle(handlerInput)) {
+      const attributes = handlerInput.attributesManager.getSessionAttributes();
+      return !!attributes.proposedBpm;
+    }
 
-    return request.type === "IntentRequest" && request.intent.name === "AMAZON.YesIntent"
-      && attributes.proposedBpm;
+    return false;
   }
 
   public async handle(handlerInput: HandlerInput): Promise<Response> {

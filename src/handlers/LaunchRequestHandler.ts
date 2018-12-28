@@ -3,7 +3,7 @@ import { Response } from "ask-sdk-model";
 import { BaseIntentHandler, Intents, Request } from "../utils";
 
 @Request("LaunchRequest")
-@Intents("FasterIntent", "SlowerIntent", "InfoIntent", "AMAZON.YesIntent")
+@Intents("FasterIntent", "SlowerIntent", "InfoIntent", "AMAZON.YesIntent", "AMAZON.NoIntent")
 export class LaunchRequestHandler extends BaseIntentHandler {
   public canHandle(handlerInput: HandlerInput): boolean {
     const session = handlerInput.requestEnvelope.session;

@@ -2,7 +2,7 @@ import { HandlerInput, RequestHandler } from "ask-sdk-core";
 import { Response } from "ask-sdk-model";
 import { BaseIntentHandler, getBpmFromRequest, getFasterBpm, getResponse, Intents } from "../utils";
 
-@Intents("FasterIntent")
+@Intents("FasterIntent", "AMAZON.NextIntent")
 export class FasterIntentHandler extends BaseIntentHandler {
   public canHandle(handlerInput: HandlerInput): boolean {
     const bpm = getBpmFromRequest(handlerInput);

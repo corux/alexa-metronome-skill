@@ -2,7 +2,7 @@ import { HandlerInput } from "ask-sdk-core";
 import { Response } from "ask-sdk-model";
 import { BaseIntentHandler, getBpmFromRequest, getResponse, Intents } from "../utils";
 
-@Intents("AMAZON.StartOverIntent", "AMAZON.ResumeIntent", "AMAZON.NextIntent")
+@Intents("AMAZON.StartOverIntent", "AMAZON.ResumeIntent")
 export class AmazonResumeIntentHandler extends BaseIntentHandler {
   public async handle(handlerInput: HandlerInput): Promise<Response> {
     const bpm = getBpmFromRequest(handlerInput);

@@ -4,7 +4,6 @@ import { BaseIntentHandler, Intents } from "../utils";
 
 @Intents("AMAZON.LoopOffIntent",
   "AMAZON.LoopOnIntent",
-  "AMAZON.PreviousIntent",
   "AMAZON.RepeatIntent",
   "AMAZON.ShuffleOffIntent",
   "AMAZON.ShuffleOnIntent")

@@ -20,7 +20,7 @@ export async function getAvailableBpm(): Promise<number[]> {
   return supportedBpm;
 }
 
-export async function isBpmSupported(bpm: number): Promise<boolean> {
+async function isBpmSupported(bpm: number): Promise<boolean> {
   const bpms = await getAvailableBpm();
   return bpms.indexOf(bpm) !== -1;
 }
@@ -36,12 +36,12 @@ async function getClosestBpm(bpm: number): Promise<number> {
 }
 
 export async function getResponse(handlerInput: HandlerInput, bpm: number): Promise<ResponseBuilder> {
-  const attributes = handlerInput.attributesManager.getSessionAttributes();
 
   if (!await isBpmSupported(bpm)) {
     const reprompt = "Wieviele Schläge pro Minute sollen gespielt werden?";
     if (bpm > 0) {
       const proposedBpm = await getClosestBpm(bpm);
+      const attributes = handlerInput.attributesManager.getSessionAttributes();
       attributes.proposedBpm = proposedBpm;
       console.log(`Unsupported BPM ${bpm} redirected to ${proposedBpm}.`);
 
@@ -56,10 +56,12 @@ export async function getResponse(handlerInput: HandlerInput, bpm: number): Prom
     }
   }
 
-  attributes.bpm = bpm;
+  let builder = handlerInput.responseBuilder;
+  if (!handlerInput.requestEnvelope.request.type.startsWith("PlaybackController")) {
+    builder = builder.speak(`Metronom mit ${bpm} Schlägen pro Minute wird gestartet.`);
+  }
 
-  return handlerInput.responseBuilder
-    .speak(`Metronom mit ${bpm} Schlägen pro Minute wird gestartet.`)
+  return builder
     .addAudioPlayerPlayDirective("REPLACE_ALL", getLink(bpm), `${bpm}`, 0, undefined, {
       title: `${bpm} bpm`,
     })
@@ -84,18 +86,20 @@ const recommendedBpmList = [
 
 export async function getFasterBpm(bpm: number): Promise<number> {
   const next = recommendedBpmList.filter((item) => item > bpm);
+  let nextBpm = bpm + 10;
   if (next.length) {
-    return next[0];
+    nextBpm = Math.min(nextBpm, next[0]);
   }
 
-  return await getClosestBpm(bpm + 5);
+  return await getClosestBpm(nextBpm);
 }
 
 export async function getSlowerBpm(bpm: number): Promise<number> {
   const next = recommendedBpmList.filter((item) => item < bpm).reverse();
+  let nextBpm = bpm - 10;
   if (next.length) {
-    return next[0];
+    nextBpm = Math.max(nextBpm, next[0]);
   }
 
-  return await getClosestBpm(bpm - 5);
+  return await getClosestBpm(nextBpm);
 }

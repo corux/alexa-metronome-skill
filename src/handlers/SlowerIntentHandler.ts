@@ -1,7 +1,8 @@
 import { HandlerInput } from "ask-sdk-core";
 import { Response } from "ask-sdk-model";
-import { BaseIntentHandler, getBpmFromRequest, getResponse, getSlowerBpm, Intents } from "../utils";
+import { BaseIntentHandler, getBpmFromRequest, getResponse, getSlowerBpm, Intents, Request } from "../utils";
 
+@Request("PlaybackController.PreviousCommandIssued")
 @Intents("SlowerIntent", "AMAZON.PreviousIntent")
 export class SlowerIntentHandler extends BaseIntentHandler {
   public canHandle(handlerInput: HandlerInput): boolean {
@@ -12,8 +13,12 @@ export class SlowerIntentHandler extends BaseIntentHandler {
   public async handle(handlerInput: HandlerInput): Promise<Response> {
     const bpm = getBpmFromRequest(handlerInput);
     const nextBpm = await getSlowerBpm(bpm);
-    return (await getResponse(handlerInput, nextBpm))
-      .speak(`Verringere auf ${nextBpm} Schläge.`)
-      .getResponse();
+
+    let builder = (await getResponse(handlerInput, nextBpm));
+    if (!handlerInput.requestEnvelope.request.type.startsWith("PlaybackController")) {
+      builder = builder.speak(`Verringere auf ${nextBpm}.`);
+    }
+
+    return builder.getResponse();
   }
 }

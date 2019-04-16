@@ -3,13 +3,14 @@
     "publishingInformation": {
       "locales": {
         "de-DE": {
-          "summary": "Das Alexa Metronom mit Unterstützung von 40 bis 260 Schlägen pro Minute.",
+          "summary": "Das Alexa Metronom mit Unterstützung von 30 bis 300 Schlägen pro Minute.",
           "examplePhrases": [
             "Alexa, starte mein Metronom",
             "Alexa, öffne mein Metronom und spiele 82 Schläge pro Minute"
           ],
           "name": "Mein Metronom",
-          "description": "Dieser Skill macht Alexa zum Metronom. Unterstützt werden 40 bis 260 Schläge pro Minute.\n\nMit folgenden Befehlen kann das Metronom gesteuert werden:\n- Alexa, starte mein Metronom mit 82 Schlägen\n- Alexa, sage meinem Metronom es soll schneller / langsamer spielen\n- Alexa, frage mein Metronom nach dem aktuellen Tempo\n\nHinweis: aktuell werden noch keine Takte wie z.B. 3/4 oder 4/4 unterstützt.",
+          "description": "Dieser Skill macht Alexa zum Metronom. Unterstützt werden 30 bis 300 Schläge pro Minute.\n\nMit folgenden Befehlen kann das Metronom gesteuert werden:\n- Alexa, starte mein Metronom mit 82 Schlägen\n- Alexa, sage meinem Metronom es soll schneller spielen (Kurzform: Alexa, weiter)\n- Alexa, sage meinem Metronom es soll langsamer spielen (Kurzform: Alexa, zurück)\n- Alexa, frage mein Metronom nach dem aktuellen Tempo\n\nHinweis: aktuell werden noch keine Takte wie z.B. 3/4 oder 4/4 unterstützt.",
+          "updatesDescription": "- Es werden jetzt 30 bis 300 Schläge pro Minute unterstützt\n- Zum schnellen Tempo-Wechsel werden die Kurzbefehle \"Alexa, weiter\" und \"Alexa, zurück\" unterstützt",
           "keywords": [
             "Metronom",
             "Takt",

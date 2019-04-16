@@ -16,11 +16,11 @@
       },
       "resources": {
         "manifest": {
-          "eTag": "e6f17f579a16b4a9d0f1fcac642ae6bc"
+          "eTag": "dcc2a14d7600e755bfcdf7228542f3dd"
         },
         "interactionModel": {
           "de-DE": {
-            "eTag": "ae8d22408d2ce9169fcb5a3531175538"
+            "eTag": "cc3810daf1f8446ee8b6f8a02fb01ef8"
           }
         },
         "lambda": [
@@ -33,7 +33,7 @@
             "codeUri": "dist",
             "functionName": "alexa-metronome-skill-production",
             "handler": "index.handler",
-            "revisionId": "4ca945f4-1c76-41fa-b6cd-770d1533c3bb",
+            "revisionId": "64de292c-a18b-4b0b-80b0-87fd315bdb14",
             "runtime": "nodejs8.10"
           }
         ]

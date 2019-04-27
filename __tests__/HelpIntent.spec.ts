@@ -8,10 +8,13 @@ describe("AMAZON.HelpIntent", () => {
       .handler(handler)
       .interactionModelFile("models/de-DE.json")
       .create();
+    alexa.filter((requestJSON) => {
+      requestJSON.request.locale = "de-DE";
+    });
   });
 
   it("Provide help message", async () => {
-    const result: any = await alexa.utter("help");
+    const result = await alexa.intend("AMAZON.HelpIntent");
     expect(result.response.outputSpeech.ssml).toContain("Das Metronom kann zwischen 30 und 300");
     expect(result.response.outputSpeech.ssml).toContain("Wieviele Schläge pro Minute sollen gespielt werden?");
     expect(result.response.reprompt.outputSpeech.ssml).toContain("Wieviele Schläge pro Minute sollen gespielt werden?");

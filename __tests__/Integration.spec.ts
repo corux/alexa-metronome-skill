@@ -9,6 +9,9 @@ describe("Integration", () => {
       .interactionModelFile("models/de-DE.json")
       .create();
     alexa.context().device().audioPlayerSupported(true);
+    alexa.filter((requestJSON) => {
+      requestJSON.request.locale = "de-DE";
+    });
   });
 
   test("Start metronome: unsupported bpm", async () => {

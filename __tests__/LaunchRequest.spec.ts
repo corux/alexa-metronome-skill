@@ -8,6 +8,9 @@ describe("LaunchRequest", () => {
       .handler(handler)
       .interactionModelFile("models/de-DE.json")
       .create();
+    alexa.filter((requestJSON) => {
+      requestJSON.request.locale = "de-DE";
+    });
   });
 
   test("Ask for bpm", async () => {

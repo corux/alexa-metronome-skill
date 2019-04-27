@@ -8,6 +8,9 @@ describe("InfoIntent", () => {
       .handler(handler)
       .interactionModelFile("models/de-DE.json")
       .create();
+    alexa.filter((requestJSON) => {
+      requestJSON.request.locale = "de-DE";
+    });
   });
 
   it("Provide currently playing bpm", async () => {

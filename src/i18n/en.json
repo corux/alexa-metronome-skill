@@ -1,0 +1,18 @@
+{
+  "play": {
+    "started": "Starting metronome with %s beats per minute.",
+    "faster": "Increase to %s.",
+    "slower": "Decrease to %s.",
+    "redirect": "The tempo %s is not yet supported. Do you want to use %s instead?",
+    "unsupported": "Sorry, I did not get that."
+  },
+  "unsupported": "Sorry, I don't understand this command.",
+  "resume": {
+    "text": "There is nothing to resume."
+  },
+  "info": "Currently playing %s beats per minute.",
+  "help": {
+    "text": "The metronome supports between %s and %s beats per minute.",
+    "reprompt": "Please specify the beats per minute to play."
+  }
+}

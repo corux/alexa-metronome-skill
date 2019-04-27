@@ -3,6 +3,7 @@ import i18next, * as i18n from "i18next";
 import * as sprintf from "i18next-sprintf-postprocessor";
 
 import * as locale_de from "../i18n/de.json";
+import * as locale_en from "../i18n/en.json";
 import { getLocale } from "../utils";
 
 export class LocalizationInterceptor implements RequestInterceptor {
@@ -16,6 +17,9 @@ export class LocalizationInterceptor implements RequestInterceptor {
         resources: {
           de: {
             translation: locale_de,
+          },
+          en: {
+            translation: locale_en,
           },
         },
         returnObjects: true,

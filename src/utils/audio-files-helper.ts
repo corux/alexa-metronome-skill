@@ -36,9 +36,10 @@ async function getClosestBpm(bpm: number): Promise<number> {
 }
 
 export async function getResponse(handlerInput: HandlerInput, bpm: number): Promise<ResponseBuilder> {
+  const t = handlerInput.attributesManager.getRequestAttributes().t;
 
   if (!await isBpmSupported(bpm)) {
-    const reprompt = "Wieviele Schläge pro Minute sollen gespielt werden?";
+    const reprompt = t("help.reprompt");
     if (bpm > 0) {
       const proposedBpm = await getClosestBpm(bpm);
       const attributes = handlerInput.attributesManager.getSessionAttributes();
@@ -46,19 +47,18 @@ export async function getResponse(handlerInput: HandlerInput, bpm: number): Prom
       console.log(`Unsupported BPM ${bpm} redirected to ${proposedBpm}.`);
 
       return handlerInput.responseBuilder
-        .speak(`Das Tempo ${bpm} wird noch nicht unterstützt.
-          Möchtest du stattdessen ${proposedBpm} verwenden?`)
+        .speak(`${t("play.redirect", bpm, proposedBpm)}`)
         .reprompt(reprompt);
     } else {
       return handlerInput.responseBuilder
-        .speak(`Ich habe dich nicht verstanden. ${reprompt}`)
+        .speak(`${t("play.unsupported")} ${reprompt}`)
         .reprompt(reprompt);
     }
   }
 
   let builder = handlerInput.responseBuilder;
   if (!handlerInput.requestEnvelope.request.type.startsWith("PlaybackController")) {
-    builder = builder.speak(`Metronom mit ${bpm} Schlägen pro Minute wird gestartet.`);
+    builder = builder.speak(t("play.started", bpm));
   }
 
   return builder

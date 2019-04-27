@@ -10,9 +10,10 @@ export class InfoIntentHandler extends BaseIntentHandler {
   }
 
   public async handle(handlerInput: HandlerInput): Promise<Response> {
+    const t = handlerInput.attributesManager.getRequestAttributes().t;
     const bpm = getBpmFromRequest(handlerInput);
     return handlerInput.responseBuilder
-      .speak(`Aktuell werden ${bpm} Schläge pro Minute gespielt.`)
+      .speak(t("info", bpm))
       .withShouldEndSession(true)
       .getResponse();
   }

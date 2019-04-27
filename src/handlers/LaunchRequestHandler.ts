@@ -16,11 +16,12 @@ export class LaunchRequestHandler extends BaseIntentHandler {
   }
 
   public async handle(handlerInput: HandlerInput): Promise<Response> {
+    const t = handlerInput.attributesManager.getRequestAttributes().t;
     const responseBuilder = handlerInput.responseBuilder;
 
     return responseBuilder
-      .speak("Wieviele Schläge pro Minute sollen gespielt werden?")
-      .reprompt("Wieviele Schläge pro Minute sollen gespielt werden?")
+      .speak(t("help.reprompt"))
+      .reprompt(t("help.reprompt"))
       .getResponse();
   }
 }

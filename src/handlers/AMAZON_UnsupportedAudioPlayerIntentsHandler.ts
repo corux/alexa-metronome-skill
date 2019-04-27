@@ -9,8 +9,9 @@ import { BaseIntentHandler, Intents } from "../utils";
   "AMAZON.ShuffleOnIntent")
 export class AmazonUnsupportedAudioPlayerIntentsHandler extends BaseIntentHandler {
   public handle(handlerInput: HandlerInput): Response {
+    const t = handlerInput.attributesManager.getRequestAttributes().t;
     return handlerInput.responseBuilder
-      .speak("Diesen Befehl verstehe ich nicht")
+      .speak(t("unsupported"))
       .withShouldEndSession(true)
       .getResponse();
   }

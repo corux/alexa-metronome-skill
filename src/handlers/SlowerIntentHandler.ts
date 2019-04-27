@@ -11,12 +11,13 @@ export class SlowerIntentHandler extends BaseIntentHandler {
   }
 
   public async handle(handlerInput: HandlerInput): Promise<Response> {
+    const t = handlerInput.attributesManager.getRequestAttributes().t;
     const bpm = getBpmFromRequest(handlerInput);
     const nextBpm = await getSlowerBpm(bpm);
 
     let builder = (await getResponse(handlerInput, nextBpm));
     if (!handlerInput.requestEnvelope.request.type.startsWith("PlaybackController")) {
-      builder = builder.speak(`Verringere auf ${nextBpm}.`);
+      builder = builder.speak(t("play.slower", nextBpm));
     }
 
     return builder.getResponse();

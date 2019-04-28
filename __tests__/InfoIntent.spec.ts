@@ -1,5 +1,6 @@
 import { VirtualAlexa } from "virtual-alexa";
 import { handler } from "../src";
+import { supportedBpm } from "../src/utils";
 
 describe("InfoIntent", () => {
   let alexa: VirtualAlexa;
@@ -11,6 +12,7 @@ describe("InfoIntent", () => {
     alexa.filter((requestJSON) => {
       requestJSON.request.locale = "de-DE";
     });
+    supportedBpm.push(80);
   });
 
   it("Provide currently playing bpm", async () => {

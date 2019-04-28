@@ -33,7 +33,7 @@
             "codeUri": "dist",
             "functionName": "alexa-metronome-skill-production",
             "handler": "index.handler",
-            "revisionId": "64de292c-a18b-4b0b-80b0-87fd315bdb14",
+            "revisionId": "f9bac58d-da97-477e-a4ed-e5192ef44902",
             "runtime": "nodejs8.10"
           }
         ]

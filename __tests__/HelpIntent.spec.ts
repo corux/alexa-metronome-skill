@@ -1,5 +1,6 @@
 import { VirtualAlexa } from "virtual-alexa";
 import { handler } from "../src";
+import { supportedBpm } from "../src/utils";
 
 describe("AMAZON.HelpIntent", () => {
   let alexa: VirtualAlexa;
@@ -11,6 +12,7 @@ describe("AMAZON.HelpIntent", () => {
     alexa.filter((requestJSON) => {
       requestJSON.request.locale = "de-DE";
     });
+    supportedBpm.push(30, 300);
   });
 
   it("Provide help message", async () => {

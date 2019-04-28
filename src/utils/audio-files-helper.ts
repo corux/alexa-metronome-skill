@@ -1,12 +1,11 @@
 import { HandlerInput, ResponseBuilder } from "ask-sdk-core";
 import * as AWS from "aws-sdk";
 
-const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
-
-const supportedBpm: number[] = [];
+export const supportedBpm: number[] = [];
 
 export async function getAvailableBpm(): Promise<number[]> {
   if (!supportedBpm.length) {
+    const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
     const result = await s3.listObjectsV2({
       Bucket: "alexa-metronome-skill",
       Prefix: "audio/",

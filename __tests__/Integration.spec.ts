@@ -1,5 +1,6 @@
 import { VirtualAlexa } from "virtual-alexa";
 import { handler } from "../src";
+import { supportedBpm } from "../src/utils";
 
 describe("Integration", () => {
   let alexa: VirtualAlexa;
@@ -12,6 +13,7 @@ describe("Integration", () => {
     alexa.filter((requestJSON) => {
       requestJSON.request.locale = "de-DE";
     });
+    supportedBpm.push(30, 80, 84);
   });
 
   test("Start metronome: unsupported bpm", async () => {

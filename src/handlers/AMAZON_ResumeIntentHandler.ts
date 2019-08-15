@@ -1,12 +1,12 @@
-import { HandlerInput } from "ask-sdk-core";
+import { BaseRequestHandler, IExtendedHandlerInput, Intents, Request } from "@corux/ask-extensions";
 import { Response } from "ask-sdk-model";
-import { BaseIntentHandler, getBpmFromRequest, getResponse, Intents, Request } from "../utils";
+import { getBpmFromRequest, getResponse } from "../utils";
 
 @Request("PlaybackController.PlayCommandIssued")
 @Intents("AMAZON.StartOverIntent", "AMAZON.ResumeIntent")
-export class AmazonResumeIntentHandler extends BaseIntentHandler {
-  public async handle(handlerInput: HandlerInput): Promise<Response> {
-    const t = handlerInput.attributesManager.getRequestAttributes().t;
+export class AmazonResumeIntentHandler extends BaseRequestHandler {
+  public async handle(handlerInput: IExtendedHandlerInput): Promise<Response> {
+    const t = handlerInput.t;
     const bpm = getBpmFromRequest(handlerInput);
 
     if (bpm) {
@@ -15,7 +15,7 @@ export class AmazonResumeIntentHandler extends BaseIntentHandler {
     }
 
     // Only occurs, if "resume" is requested while skill session is open and playback has not started
-    return handlerInput.responseBuilder
+    return handlerInput.getResponseBuilder()
       .speak(`${t("resume.text")} ${t("help.reprompt")}`)
       .reprompt(t("help.reprompt"))
       .getResponse();

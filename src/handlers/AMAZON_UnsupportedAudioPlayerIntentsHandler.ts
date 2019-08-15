@@ -1,16 +1,15 @@
-import { HandlerInput } from "ask-sdk-core";
+import { BaseRequestHandler, IExtendedHandlerInput, Intents } from "@corux/ask-extensions";
 import { Response } from "ask-sdk-model";
-import { BaseIntentHandler, Intents } from "../utils";
 
 @Intents("AMAZON.LoopOffIntent",
   "AMAZON.LoopOnIntent",
   "AMAZON.RepeatIntent",
   "AMAZON.ShuffleOffIntent",
   "AMAZON.ShuffleOnIntent")
-export class AmazonUnsupportedAudioPlayerIntentsHandler extends BaseIntentHandler {
-  public handle(handlerInput: HandlerInput): Response {
-    const t = handlerInput.attributesManager.getRequestAttributes().t;
-    return handlerInput.responseBuilder
+export class AmazonUnsupportedAudioPlayerIntentsHandler extends BaseRequestHandler {
+  public handle(handlerInput: IExtendedHandlerInput): Response {
+    const t = handlerInput.t;
+    return handlerInput.getResponseBuilder()
       .speak(t("unsupported"))
       .withShouldEndSession(true)
       .getResponse();

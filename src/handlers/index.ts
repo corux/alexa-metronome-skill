@@ -5,7 +5,6 @@ export * from "./AMAZON_ResumeIntentHandler";
 export * from "./AMAZON_UnsupportedAudioPlayerIntentsHandler";
 export * from "./CustomErrorHandler";
 export * from "./LaunchRequestHandler";
-export * from "./SessionEndedHandler";
 export * from "./FasterIntentHandler";
 export * from "./SlowerIntentHandler";
 export * from "./MetronomeIntentHandler";

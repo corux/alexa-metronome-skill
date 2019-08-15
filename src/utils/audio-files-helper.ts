@@ -1,3 +1,4 @@
+import { IExtendedHandlerInput } from "@corux/ask-extensions";
 import { HandlerInput, ResponseBuilder } from "ask-sdk-core";
 import * as AWS from "aws-sdk";
 
@@ -34,8 +35,8 @@ async function getClosestBpm(bpm: number): Promise<number> {
   return bpms[0];
 }
 
-export async function getResponse(handlerInput: HandlerInput, bpm: number): Promise<ResponseBuilder> {
-  const t = handlerInput.attributesManager.getRequestAttributes().t;
+export async function getResponse(handlerInput: IExtendedHandlerInput, bpm: number): Promise<ResponseBuilder> {
+  const t: any = handlerInput.t;
 
   if (!await isBpmSupported(bpm)) {
     const reprompt = t("help.reprompt");

@@ -1,9 +1,10 @@
+import { BaseRequestHandler, IExtendedHandlerInput, Intents } from "@corux/ask-extensions";
 import { HandlerInput } from "ask-sdk-core";
 import { Response } from "ask-sdk-model";
-import { BaseIntentHandler, getResponse, Intents } from "../utils";
+import { getResponse } from "../utils";
 
 @Intents("AMAZON.YesIntent")
-export class AmazonYesIntentHandler extends BaseIntentHandler {
+export class AmazonYesIntentHandler extends BaseRequestHandler {
   public canHandle(handlerInput: HandlerInput): boolean {
     if (super.canHandle(handlerInput)) {
       const attributes = handlerInput.attributesManager.getSessionAttributes();
@@ -13,7 +14,7 @@ export class AmazonYesIntentHandler extends BaseIntentHandler {
     return false;
   }
 
-  public async handle(handlerInput: HandlerInput): Promise<Response> {
+  public async handle(handlerInput: IExtendedHandlerInput): Promise<Response> {
     const attributes = handlerInput.attributesManager.getSessionAttributes();
     const bpm = attributes.proposedBpm;
 

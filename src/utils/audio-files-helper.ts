@@ -36,7 +36,7 @@ async function getClosestBpm(bpm: number): Promise<number> {
 }
 
 export async function getResponse(handlerInput: IExtendedHandlerInput, bpm: number): Promise<ResponseBuilder> {
-  const t: any = handlerInput.t;
+  const t = handlerInput.t;
 
   if (!await isBpmSupported(bpm)) {
     const reprompt = t("help.reprompt");
@@ -47,7 +47,7 @@ export async function getResponse(handlerInput: IExtendedHandlerInput, bpm: numb
       console.log(`Unsupported BPM ${bpm} redirected to ${proposedBpm}.`);
 
       return handlerInput.responseBuilder
-        .speak(`${t("play.redirect", bpm, proposedBpm)}`)
+        .speak(`${t("play.redirect", { requested: bpm, suggested: proposedBpm })}`)
         .reprompt(reprompt);
     } else {
       return handlerInput.responseBuilder
@@ -58,7 +58,7 @@ export async function getResponse(handlerInput: IExtendedHandlerInput, bpm: numb
 
   let builder = handlerInput.responseBuilder;
   if (!handlerInput.requestEnvelope.request.type.startsWith("PlaybackController")) {
-    builder = builder.speak(t("play.started", bpm));
+    builder = builder.speak(t("play.started", { bpm }));
   }
 
   return builder

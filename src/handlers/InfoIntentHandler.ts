@@ -14,7 +14,7 @@ export class InfoIntentHandler extends BaseRequestHandler {
     const t: any = handlerInput.t;
     const bpm = getBpmFromRequest(handlerInput);
     return handlerInput.getResponseBuilder()
-      .speak(t("info", bpm))
+      .speak(t("info", { bpm }))
       .withShouldEndSession(true)
       .getResponse();
   }

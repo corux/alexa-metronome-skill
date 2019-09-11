@@ -18,7 +18,7 @@ export class FasterIntentHandler extends BaseRequestHandler {
 
     let builder = (await getResponse(handlerInput, nextBpm));
     if (!handlerInput.requestEnvelope.request.type.startsWith("PlaybackController")) {
-      builder = builder.speak(t("play.faster", nextBpm));
+      builder = builder.speak(t("play.faster", { bpm: nextBpm }));
     }
 
     return builder.getResponse();

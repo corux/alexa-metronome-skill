@@ -18,7 +18,7 @@ export class SlowerIntentHandler extends BaseRequestHandler {
 
     let builder = (await getResponse(handlerInput, nextBpm));
     if (!handlerInput.requestEnvelope.request.type.startsWith("PlaybackController")) {
-      builder = builder.speak(t("play.slower", nextBpm));
+      builder = builder.speak(t("play.slower", { bpm: nextBpm }));
     }
 
     return builder.getResponse();

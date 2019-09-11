@@ -1,18 +1,18 @@
 {
   "play": {
-    "started": "Metronom mit %s Schlägen pro Minute wird gestartet.",
-    "faster": "Erhöhe auf %s.",
-    "slower": "Verringere auf %s.",
-    "redirect": "Das Tempo %s wird noch nicht unterstützt. Möchtest du stattdessen %s verwenden?",
+    "started": "Metronom mit {{bpm}} Schlägen pro Minute wird gestartet.",
+    "faster": "Erhöhe auf {{bpm}}.",
+    "slower": "Verringere auf {{bpm}}.",
+    "redirect": "Das Tempo {{requested}} wird noch nicht unterstützt. Möchtest du stattdessen {{suggested}} verwenden?",
     "unsupported": "Ich habe dich nicht verstanden."
   },
   "unsupported": "Diesen Befehl verstehe ich nicht.",
   "resume": {
     "text": "Es gibt nichts fortzusetzen."
   },
-  "info": "Aktuell werden %s Schläge pro Minute gespielt.",
+  "info": "Aktuell werden {{bpm}} Schläge pro Minute gespielt.",
   "help": {
-    "text": "Das Metronom kann zwischen %s und %s Schläge pro Minute abspielen.",
+    "text": "Das Metronom kann zwischen {{min}} und {{max}} Schläge pro Minute abspielen.",
     "reprompt": "Wieviele Schläge pro Minute sollen gespielt werden?"
   }
 }

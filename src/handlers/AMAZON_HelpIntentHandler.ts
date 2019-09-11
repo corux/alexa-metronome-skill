@@ -9,7 +9,7 @@ export class AmazonHelpIntentHandler extends BaseRequestHandler {
     const bpms = await getAvailableBpm();
 
     return handlerInput.getResponseBuilder()
-      .speak(`${t("help.text", Math.min(...bpms), Math.max(...bpms))} ${t("help.reprompt")}`)
+      .speak(`${t("help.text", { min: Math.min(...bpms), max: Math.max(...bpms) })} ${t("help.reprompt")}`)
       .reprompt(t("help.reprompt"))
       .getResponse();
   }

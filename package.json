@@ -29,10 +29,10 @@
     "@corux/ask-extensions": "2.0.0",
     "@types/jest": "24.0.25",
     "@types/node": "10.14.1",
-    "ask-cli": "1.7.19",
+    "ask-cli": "1.7.20",
     "ask-sdk-core": "2.7.0",
     "ask-sdk-model": "1.25.1",
-    "aws-sdk": "2.596.0",
+    "aws-sdk": "2.597.0",
     "jest": "24.9.0",
     "parcel-bundler": "1.12.4",
     "parcel-plugin-static-files-copy": "2.2.1",
@@ -42,6 +42,6 @@
     "ts-node": "8.5.4",
     "tslint": "5.20.1",
     "typescript": "3.7.4",
-    "virtual-alexa": "0.7.3"
+    "virtual-alexa": "0.7.5"
   }
 }

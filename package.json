@@ -32,7 +32,7 @@
     "ask-cli": "2.10.2",
     "ask-sdk-core": "2.8.0",
     "ask-sdk-model": "1.28.0",
-    "aws-sdk": "2.696.0",
+    "aws-sdk": "2.701.0",
     "jest": "26.0.1",
     "parcel-bundler": "1.12.4",
     "parcel-plugin-static-files-copy": "2.4.3",
